@@ -7,7 +7,18 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
+import { Reducers } from './State/reducers/index';
+import { Effects } from './State/effects/effects.registry';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideStore(), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), provideEffects()]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideHttpClient(),
+    provideClientHydration(), 
+    provideAnimationsAsync(), 
+    provideStore(Reducers), 
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    provideEffects([...Effects]),    
+    provideRouter(routes), 
+  ],
 };
