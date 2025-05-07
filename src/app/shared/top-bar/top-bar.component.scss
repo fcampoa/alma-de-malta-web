@@ -1,0 +1,21 @@
+.menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .logo {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 20px;
+  }
+
+  :host {
+    display: block;
+  }
