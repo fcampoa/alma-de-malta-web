@@ -1,4 +1,4 @@
-<app-top-bar></app-top-bar>
-<div class="content">
-<router-outlet />
-</div>
+<app-top-bar (toggleSidenav)="toggleSideBar()"></app-top-bar>
+<app-side-bar [isSidebarOpen]="isSideBarOpen">
+    <router-outlet />
+</app-side-bar>

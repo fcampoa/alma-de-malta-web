@@ -15,7 +15,7 @@ export class BaseService<T, K>{
         return this.http.get<K>(`${this.environment.apiBaseUrl}/${this.endpoint}`);
      }
 
-    getById(id: number): Observable<K> {
+    getById(id: any): Observable<K> {
             return this.http.get<K>(`${this.environment.apiBaseUrl}/${this.endpoint}/${id}`);
     }
 
@@ -24,14 +24,15 @@ export class BaseService<T, K>{
     }
 
     create(body: T): Observable<K> {
+        debugger;
         return this.http.post<K>(`${this.environment.apiBaseUrl}/${this.endpoint}`, body);
     }
 
-    update( body: T, id: string): Observable<K> {
+    update( body: T, id: any): Observable<K> {
         return this.http.put<K>(`${this.environment.apiBaseUrl}/${this.endpoint}/${id}`, body);
     }
 
-    delete(id: string) {
+    delete(id: any) {
         return this.http.delete(`${this.environment.apiBaseUrl}/${this.endpoint}/${id}`);
     }
 }

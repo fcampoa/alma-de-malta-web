@@ -1,22 +1,17 @@
 
 <mat-sidenav-container class="sidenav-container">
   <!-- Sidebar -->
-  <mat-sidenav #drawer mode="side" class="sidenav" fixedInViewport [opened]="true">
-    <mat-toolbar>⚙️ Menu</mat-toolbar>
+  <mat-sidenav color="primary" #drawer mode="side" class="sidenav" fixedInViewport [opened]="isSidebarOpen">
     <mat-nav-list>
-      <a mat-list-item routerLink="/">Inicio</a>
-      <a mat-list-item routerLink="/about">Acerca</a>
-      <a mat-list-item routerLink="/settings">Configuración</a>
+      <a mat-list-item routerLink="/admin/products/list">productos</a>
+      <a mat-list-item routerLink="/storage">Inventario</a>
+      <a mat-list-item routerLink="/settings">Ventas</a>
+      <a mat-list-item routerLink="/admin/users">Reportes</a>
     </mat-nav-list>
   </mat-sidenav>
 
   <!-- Main content -->
   <mat-sidenav-content>
-    <!-- <mat-toolbar color="primary" class="main-toolbar">
-      <button mat-icon-button (click)="drawer.toggle()" class="menu-button">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </mat-toolbar> -->
     <div class="content">
       <ng-content></ng-content>
     </div>

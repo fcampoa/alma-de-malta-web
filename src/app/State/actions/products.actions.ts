@@ -7,6 +7,10 @@ const prefix = `${productsFeatureKey} [products]`;
 export const GetProducts = createAction(
   `${prefix} Get Products`
 );
+export const GetProductById = createAction(
+  `${prefix} Get Products By Id`,
+  props<{ id: string }>()
+  );
 
 export const SetProducts = createAction(
   `${prefix} Set Products`,
@@ -16,4 +20,9 @@ export const SetProducts = createAction(
 export const SetSelectedProduct = createAction(
   `${prefix} Set Selected Product`,
   props<{ product: Product | null }>()
+);
+
+export const CreateProduct = createAction(
+  `${prefix} Create Product`,
+  props<{ product: Product }>()
 );

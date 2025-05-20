@@ -2,11 +2,14 @@
   height: 100vh; /* Asegura que el contenedor ocupe toda la altura */
   display: flex;
   flex-direction: column;
+  //background-color: var($pink, #FFFFFF);
 }
 
 .sidenav {
+  margin-top: 5%;
   width: 250px; /* Ancho del sidebar */
-  background-color: red; /* Color de fondo del sidebar */
+ // background-color: var($pink) !important;
+  color: var(--app-foreground-color) !important;
 }
 
 .main-toolbar {
