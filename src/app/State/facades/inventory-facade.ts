@@ -1,27 +1,27 @@
 import { Injectable } from "@angular/core";
+import { InventoryMovement } from "../../models/inventory-movement";
+import { Store } from "@ngrx/store";
+import * as InventorySelector from "../selectors/inventory.selectors";
+import * as InventoryActions from "../actions/inventory.actions";
 
 @Injectable({
     providedIn: 'root'
     })
 export class InventoryFacade {
-    constructor() {
-        // Initialize the facade
+    constructor(private store: Store<InventoryMovement>) {
     }
 
-    // Define methods to interact with the inventory state
-    getInventoryItems() {
-        // Logic to get inventory items
+    getInventoryMovements() {
+        return this.store.select(InventorySelector.getInventoryMovements);
     }
 
-    addInventoryItem(item: any) {
-        // Logic to add an inventory item
+    addInventoryMovement(inventoryMovement: InventoryMovement) {
+        this.store.dispatch(InventoryActions.CreateInventoryMovement({ inventoryMovement }));
     }
 
-    updateInventoryItem(item: any) {
-        // Logic to update an inventory item
+    updateInventoryMovement(item: any) {
     }
 
-    deleteInventoryItem(itemId: number) {
-        // Logic to delete an inventory item
+    deleteInventoryMovement(itemId: number) {
     }
 }

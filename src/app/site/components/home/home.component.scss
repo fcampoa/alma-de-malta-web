@@ -1,8 +1,13 @@
 .container {
-    background-image: url('/assets/img/1.jpg'); /* Ruta relativa a la carpeta `src/assets` */
-    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    height: 100vh; /* Asegura que el fondo cubra toda la altura de la ventana */
-    margin: 0; /* Elimina márgenes */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/assets/img/1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  z-index: -1;
 }
