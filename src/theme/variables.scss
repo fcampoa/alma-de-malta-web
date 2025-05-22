@@ -1,0 +1,120 @@
+$pink: #FF57DA;
+$text: #5C94FF;
+$darkBlue: #001235;
+
+// @font-face {
+//   font-family: 'Raleway';
+//   font-weight: 200;
+//   src: url('../assets/fonts/raleway.ttf') format('truetype');
+//   src: url('../assets/fonts/raleway.woff') format('woff');
+//   src: url('../assets/fonts/raleway.woff2') format('woff2');
+// }
+
+// @font-face {
+//   font-family: 'Raleway-SemiBold';
+//   font-weight: 500;
+//   src: url('../assets/fonts/raleway-semibold.ttf') format('truetype');
+//   src: url('../assets/fonts/raleway-semibold.woff') format('woff');
+//   src: url('../assets/fonts/raleway-semibold.woff2') format('woff2');
+// }
+
+:root {
+     //General colors
+     --primary-background-color: #001235;
+     --primary-text-color:#5C94FF;
+     --primary-component-background-color:#5C94FF;
+     --primary-border-color: #5C94FF;
+     --secondary-text-color: #7EE8FF;
+     --secondary-border-color:#FF57DA;
+     --text-color-for-primary-component-background:#001235;
+
+     //Container colors
+     --container-background-color: #001235;
+     --container-text-color:#E6F3FF;
+     --container-icon-circle-background-color:#5C94FF;
+     --container-icon-circle-text-color:white;
+
+     --ion-toolbar-background: #001235;
+     --secondary-background-color: #5C94FF;
+     --focus-contrast-color: #001235;
+
+     --ion-background-color: #3D495F;
+     --ion-color-secondary:#7CC8FF;
+     --ion-background-color-rgb: 61,73,95;
+
+     --ion-text-color: #7EE8FF;
+     --ion-text-color-rgb: 126,232,255;
+
+     --ion-text-color-step-50: #7be0f7;
+     --ion-text-color-step-100: #78d8ef;
+     --ion-text-color-step-150: #74d0e7;
+     --ion-text-color-step-200: #71c8df;
+     --ion-text-color-step-250: #6ec0d7;
+     --ion-text-color-step-300: #6ab8cf;
+     --ion-text-color-step-350: #67b0c7;
+     --ion-text-color-step-400: #64a8bf;
+     --ion-text-color-step-450: #61a0b7;
+     --ion-text-color-step-500: #5e99af;
+     --ion-text-color-step-550: #5a91a7;
+     --ion-text-color-step-600: #57899f;
+     --ion-text-color-step-650: #548197;
+     --ion-text-color-step-700: #51798f;
+     --ion-text-color-step-750: #4d7187;
+     --ion-text-color-step-800: #4a697f;
+     --ion-text-color-step-850: #476177;
+     --ion-text-color-step-900: #44596f;
+     --ion-text-color-step-950: #405167;
+
+     --ion-background-color-step-50: #405167;
+     --ion-background-color-step-100: #44596f;
+     --ion-background-color-step-150: #476177;
+     --ion-background-color-step-200: #4a697f;
+     --ion-background-color-step-250: #4d7187;
+     --ion-background-color-step-300: #51798f;
+     --ion-background-color-step-350: #548197;
+     --ion-background-color-step-400: #57899f;
+     --ion-background-color-step-450: #5a91a7;
+     --ion-background-color-step-500: #5e99af;
+     --ion-background-color-step-550: #61a0b7;
+     --ion-background-color-step-600: #64a8bf;
+     --ion-background-color-step-650: #67b0c7;
+     --ion-background-color-step-700: #6bb8cf;
+     --ion-background-color-step-750: #6ec0d7;
+     --ion-background-color-step-800: #71c8df;
+     --ion-background-color-step-850: #74d0e7;
+     --ion-background-color-step-900: #78d8ef;
+     --ion-background-color-step-950: #7be0f7;
+
+     --ion-color-pink: #FF57DA;
+     --ion-color-pink-rgb: 255,87,218;
+     --ion-color-pink-contrast: #000000;
+     --ion-color-pink-contrast-rgb: 0,0,0;
+     --ion-color-pink-shade: #e04dc0;
+     --ion-color-pink-tint: #ff68de;
+
+     --ion-item-background: transparent !important;
+  }
+
+  .light-theme {
+    //General colors
+    --primary-background-color: #E6F3FF;
+    --primary-text-color:#00256C;
+    --primary-component-background-color:#FFFFFF;
+    --primary-border-color: #00256C;
+    --secondary-text-color: #0074E0;
+    --secondary-border-color:#D600A8;
+    --text-color-for-primary-component-background:#00256C;
+
+    //Container colors
+    --container-background-color: #FFFFFF;
+    --container-text-color:#00256C;
+    --container-icon-circle-background-color:#00256C;
+    --container-icon-circle-text-color:white;
+
+    --ion-background-color: #E6F3FF;
+    --ion-text-color: #000000;
+    --ion-toolbar-background: #001235;
+    --ion-color-primary: #007AFF;
+    --ion-color-secondary: #5C94FF;
+    --ion-item-background: #F0F0F0;
+  }

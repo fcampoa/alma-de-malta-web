@@ -1,0 +1,85 @@
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MeasureUnit } from '../../../../enums/mesaure-unit.enum';
+import { ProductCategory } from '../../../../enums/product-category.enum';
+import { Product } from '../../../../models/product';
+import { ActivatedRoute } from '@angular/router';
+import { ProductFacade } from '../../../../State/facades/product-facade';
+@Component({
+  selector: 'app-product',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    ReactiveFormsModule
+  ],
+  templateUrl: './product.component.html',
+  styleUrl: './product.component.scss'
+})
+export class ProductComponent implements OnInit {
+
+  productForm!: FormGroup;
+  product!: Product;
+
+  ProductCategory = ProductCategory;
+  MeasureUnit = MeasureUnit;
+
+  measureUnitOptions = Object.keys(MeasureUnit).filter(key => isNaN(Number(key))).map(key => ({ name: key, value: MeasureUnit[key as keyof typeof MeasureUnit] }));
+  categoryOptions = Object.keys(ProductCategory).filter(key => isNaN(Number(key))).map(key => ({ name: key, value: ProductCategory[key as keyof typeof ProductCategory] }));
+
+  constructor(private facade: ProductFacade, private fb: FormBuilder, private route: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
+    this.productForm = this.fb.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      price: [0, [Validators.required, Validators.min(0)]],
+      imageUrl: [''],
+      category: ['', Validators.required],
+      stock: [0, [Validators.required, Validators.min(0)]],
+      brand: [''],
+      availability: [0, [Validators.min(0)]],
+      unit: ['', Validators.required]
+    });
+
+    this.facade.getSelectedProduct().subscribe(product => {
+      if (product) {
+        this.product = product;
+        this.patchProduct(product);
+      }
+    });
+  }
+
+  onSubmit(): void {
+    if (this.productForm.valid) {
+      this.product = this.productForm.value;
+      console.log('Product added:', this.product);
+      if (this.product.id) {
+        // this.facade.updateProduct(this.product);
+      } else {
+        this.facade.addProduct(this.product);
+      }
+    }
+  }
+
+  patchProduct(product: Product) {
+    this.productForm.patchValue({ ...product });
+  }
+
+  parseProduct() {
+    this.product = {
+      id: this.product?.id,
+      ... this.productForm.value as Product,
+      createdAt: new Date(),
+    };
+  }
+}

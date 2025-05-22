@@ -1,4 +1,11 @@
 <mat-toolbar color="primary" class="menu-bar">
+  @if(user$ | async; as user ) {
+    @if (user.role === Role.Admin) {
+      <button mat-icon-button (click)="toggle()" class="menu-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+    }
+  }
   <span class="logo">Recruiting App</span>
   <span class="spacer"></span>
   <button mat-button routerLink="/">Inicio</button>

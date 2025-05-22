@@ -24,5 +24,18 @@ export class ProductFacade {
     // Example method to add a product to the store
     addProduct(product: any) {
         // Logic to dispatch an action to add a product
+        this.store.dispatch(ProductActions.CreateProduct({ product }));
+    }
+
+    getProductById(id: string) {
+        this.store.dispatch(ProductActions.GetProductById({ id }));
+    }
+
+    getSelectedProduct() {
+        return this.store.select(ProductsSelector.GetSelectedProduct);
+    }
+
+    setSelectedProduct(product: any) {
+        this.store.dispatch(ProductActions.SetSelectedProduct({ product }));
     }
 }
