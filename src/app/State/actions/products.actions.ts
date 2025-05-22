@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { productsFeatureKey } from "../features-keys";
-import { Product } from "../../models/product";
+import { Product, ProductOverview } from "../../models/product";
 
 const prefix = `${productsFeatureKey} [products]`;
 
@@ -14,7 +14,7 @@ export const GetProductById = createAction(
 
 export const SetProducts = createAction(
   `${prefix} Set Products`,
-  props< { products: Product[] }>()
+  props< { products: ProductOverview[] }>()
 );
 
 export const SetSelectedProduct = createAction(

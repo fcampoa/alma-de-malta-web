@@ -3,11 +3,11 @@
   <h2>Lista de Productos</h2>
   <button mat-raised-button color="primary" (click)="onAdd()"><mat-icon>add</mat-icon> Agregar</button>
   <div class="filter-buttons" style="margin: 1rem 0;">
-    <button mat-stroked-button [color]="activeType === productTypes.all ? 'primary' : ''"
+    <button class="btn-format" mat-stroked-button [color]="activeType === productTypes.all ? 'primary' : ''"
       (click)="setTypeFilter(productTypes.all)">Todos</button>
-    <button mat-stroked-button [color]="activeType === productTypes.ingredient ? 'primary' : ''"
+    <button class="btn-format" mat-stroked-button [color]="activeType === productTypes.ingredient ? 'primary' : ''"
       (click)="setTypeFilter(productTypes.ingredient)">Insumos</button>
-    <button mat-stroked-button [color]="activeType === productTypes.retail ? 'primary' : ''"
+    <button class="btn-format" mat-stroked-button [color]="activeType === productTypes.retail ? 'primary' : ''"
       (click)="setTypeFilter(productTypes.retail)">Combos</button>
   </div>
   <table mat-table [dataSource]="filteredProducts(products)" class="mat-elevation-z8">

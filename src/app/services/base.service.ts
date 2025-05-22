@@ -24,7 +24,6 @@ export class BaseService<T, K>{
     }
 
     create(body: T): Observable<K> {
-        debugger;
         return this.http.post<K>(`${this.environment.apiBaseUrl}/${this.endpoint}`, body);
     }
 

@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { ProductService } from "../../services/products.service";
 import * as ProductActions from "../actions/products.actions";
 import { catchError, map, of, switchMap } from "rxjs";
-import { Product } from "../../models/product";
+import { Product, ProductOverview } from "../../models/product";
 import { ApiResponse } from "../../models/response";
 import { Router } from "@angular/router";
 
@@ -21,7 +21,7 @@ export class ProductsEffects {
                 switchMap(() =>
                     this.productService.get().pipe(
                         map((response: ApiResponse) => {
-                            return ProductActions.SetProducts({ products: response.body as Product[] });
+                            return ProductActions.SetProducts({ products: response.body as ProductOverview[] });
                         }
                         ),
                         catchError((error) =>

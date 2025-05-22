@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { InventoryMovementsComponent } from "./components/storage-movements/inventory-movements.component";
+import { InventoryMovementsComponent } from "./components/inventory-movements/inventory-movements.component";
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent },
