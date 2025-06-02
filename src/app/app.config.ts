@@ -2,7 +2,7 @@ import { ApplicationConfig, provideZoneChangeDetection, isDevMode } from '@angul
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
@@ -19,6 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideStore(Reducers), 
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideEffects([...Effects]),    
-    provideRouter(routes), provideAnimationsAsync(), 
+    provideRouter(routes), provideAnimationsAsync(), provideClientHydration(withEventReplay()), 
   ],
 };

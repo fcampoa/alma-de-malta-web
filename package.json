@@ -3,13 +3,19 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run serve:ssr",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "build:ssr": "ng build --configuration production && ng run alma-de-malta-web:server:production",
+    "serve:ssr": "node dist/alma-de-malta-web/server/server.mjs",
+    "heroku-postbuild": "npm run build:ssr",
     "serve:ssr:alma-de-malta-web": "node dist/alma-de-malta-web/server/server.mjs"
   },
   "private": true,
+  "engines": {
+    "node": "24.1.0"
+  },
   "dependencies": {
     "@angular/animations": "^19.2.8",
     "@angular/cdk": "^19.2.15",
@@ -22,7 +28,7 @@
     "@angular/platform-browser-dynamic": "^19.2.8",
     "@angular/platform-server": "^19.2.8",
     "@angular/router": "^19.2.8",
-    "@angular/ssr": "^19.2.9",
+    "@angular/ssr": "^19.2.11",
     "@ngrx/effects": "^19.1.0",
     "@ngrx/store": "^19.1.0",
     "@ngrx/store-devtools": "^19.1.0",
