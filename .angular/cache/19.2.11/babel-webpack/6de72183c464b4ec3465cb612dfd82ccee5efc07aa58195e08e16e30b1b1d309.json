@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const routes = [{\n  path: '',\n  redirectTo: 'site',\n  pathMatch: 'full'\n}, {\n  path: 'site',\n  loadChildren: () => import('./site/site.routes').then(m => m.routes)\n}, {\n  path: 'admin',\n  loadChildren: () => import('./admin/admin.routes').then(m => m.routes)\n}];","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

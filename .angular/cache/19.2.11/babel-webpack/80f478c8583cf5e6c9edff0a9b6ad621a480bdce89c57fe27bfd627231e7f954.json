@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var Role = /*#__PURE__*/function (Role) {\n  Role[Role[\"Admin\"] = 0] = \"Admin\";\n  Role[Role[\"User\"] = 1] = \"User\";\n  Role[Role[\"Guest\"] = 2] = \"Guest\";\n  return Role;\n}(Role || {});","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

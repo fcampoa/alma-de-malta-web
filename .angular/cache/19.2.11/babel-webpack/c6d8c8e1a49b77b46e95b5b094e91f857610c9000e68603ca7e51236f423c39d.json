@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { InventoryEffects } from \"./inventory.effects\";\nimport { ProductsEffects } from \"./products.effects\";\nexport const Effects = [ProductsEffects, InventoryEffects];","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

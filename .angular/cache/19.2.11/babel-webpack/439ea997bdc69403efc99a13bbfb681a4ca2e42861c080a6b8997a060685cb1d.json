@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const productsFeatureKey = 'products';\nexport const inventoryFeatureKey = 'inventory';","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
