@@ -86,7 +86,7 @@
           },
           "defaultConfiguration": "development"
         },
-        "server": {
+"server": {
   "builder": "@angular-devkit/build-angular:server",
   "options": {
     "outputPath": "dist/alma-de-malta-web/server",
