@@ -10,6 +10,7 @@
     "build:ssr": "ng build --configuration production && ng run alma-de-malta-web:server:production",
     "serve:ssr": "node dist/alma-de-malta-web/server/server.mjs",
     "heroku-postbuild": "npm run build:ssr",
+    "heroku-start": "npm run build:ssr && npm run serve:ssr",
     "serve:ssr:alma-de-malta-web": "node dist/alma-de-malta-web/server/server.mjs"
   },
   "private": true,
