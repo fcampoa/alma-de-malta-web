@@ -1,11 +1,10 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { appConfig } from './app/app.config';
+import { ApplicationRef } from '@angular/core';
 
-export function run(): Promise<void> {
-  return bootstrapApplication(AppComponent, appConfig)
-    .then(() => {})
-    .catch(err => console.error(err));
+export function bootstrap(): Promise<ApplicationRef> {
+  return bootstrapApplication(AppComponent, appConfig);
 }
 
-export default run;
+export default bootstrap;
