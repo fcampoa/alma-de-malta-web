@@ -3,15 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run serve:ssr",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:ssr": "ng build --configuration production && ng run alma-de-malta-web:server:production",
-    "serve:ssr": "node dist/alma-de-malta-web/server/server.mjs",
+    "start": "ng serve --port $PORT",
+    "postinstall": "ng build --configuration production",
     "heroku-postbuild": "npm run build:ssr",
-    "heroku-start": "npm run build:ssr && npm run serve:ssr",
-    "serve:ssr:alma-de-malta-web": "node dist/alma-de-malta-web/server/server.mjs"
+    "heroku-start": "npm run build:ssr && npm run serve:ssr"
   },
   "private": false,
   "engines": {
@@ -37,7 +35,21 @@
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.15.0",
+    "@angular-devkit/build-angular": "^19.2.9",
+    "@angular/cli": "^19.2.9",
+    "@angular/compiler-cli": "^19.2.8",
+    "@types/express": "^4.17.17",
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^18.18.0",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "sass": "^1.87.0",
+    "typescript": "~5.5.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.9",
