@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiBaseUrl: 'https://localhost:7217/api',
+    apiBaseUrl: 'https://alma-de-malta-api-9ae5ef3d2276.herokuapp.com/api',
 }
