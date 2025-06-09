@@ -1,4 +1,4 @@
-<div class="add-product-container">
+<app-container>
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col-md-6 mb-3">
@@ -46,7 +46,7 @@
           <mat-label>Categoría</mat-label>
           <mat-select formControlName="category">
             <mat-option *ngFor="let option of categoryOptions" [value]="option.value">
-              {{ option.name }}
+              {{ option.label }}
             </mat-option>
           </mat-select>
           <mat-error *ngIf="productForm.get('category')?.hasError('required')">
@@ -90,7 +90,7 @@
           <mat-label>Unidad de medida</mat-label>
           <mat-select formControlName="unit">
             <mat-option *ngFor="let option of measureUnitOptions" [value]="option.value">
-              {{ option.name }}
+              {{ option.label }}
             </mat-option>
           </mat-select>
           <mat-error *ngIf="productForm.get('unit')?.hasError('required')">
@@ -107,4 +107,4 @@
       </div>
     </div>
   </form>
-</div>
+</app-container>

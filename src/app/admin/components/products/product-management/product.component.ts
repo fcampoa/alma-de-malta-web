@@ -5,11 +5,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
-import { MeasureUnit } from '../../../../enums/mesaure-unit.enum';
+import { MeasureUnit, MeasureUnitLabels } from '../../../../enums/mesaure-unit.enum';
 import { ProductCategory } from '../../../../enums/product-category.enum';
 import { Product } from '../../../../models/product';
 import { ActivatedRoute } from '@angular/router';
 import { ProductFacade } from '../../../../State/facades/product-facade';
+import { ContainerComponent } from '../../../../shared/container/container.component';
+
 @Component({
   selector: 'app-product',
   standalone: true,
@@ -19,7 +21,8 @@ import { ProductFacade } from '../../../../State/facades/product-facade';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ContainerComponent
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
@@ -31,9 +34,9 @@ export class ProductComponent implements OnInit {
 
   ProductCategory = ProductCategory;
   MeasureUnit = MeasureUnit;
-
-  measureUnitOptions = Object.keys(MeasureUnit).filter(key => isNaN(Number(key))).map(key => ({ name: key, value: MeasureUnit[key as keyof typeof MeasureUnit] }));
-  categoryOptions = Object.keys(ProductCategory).filter(key => isNaN(Number(key))).map(key => ({ name: key, value: ProductCategory[key as keyof typeof ProductCategory] }));
+  measureUnitOptions = MeasureUnitLabels;
+  // measureUnitOptions = Object.keys(MeasureUnit).filter(key => isNaN(Number(key))).map(key => ({ label: key, value: MeasureUnit[key as keyof typeof MeasureUnit] }));
+  categoryOptions = Object.keys(ProductCategory).filter(key => isNaN(Number(key))).map(key => ({ label: key, value: ProductCategory[key as keyof typeof ProductCategory] }));
 
   constructor(private facade: ProductFacade, private fb: FormBuilder, private route: ActivatedRoute) {
   }

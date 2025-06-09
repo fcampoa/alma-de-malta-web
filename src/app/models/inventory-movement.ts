@@ -1,3 +1,4 @@
+import { MeasureUnit } from "../enums/mesaure-unit.enum";
 import { BaseEntity } from "./base-entity";
 import { ProductOverview } from "./product";
 
@@ -8,4 +9,5 @@ export interface InventoryMovement extends BaseEntity {
     date?: Date;
     userId?: string;
     isIncoming?: boolean;
+    unit: MeasureUnit;
 }
