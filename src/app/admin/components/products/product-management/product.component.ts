@@ -32,10 +32,7 @@ export class ProductComponent implements OnInit {
   productForm!: FormGroup;
   product!: Product;
 
-  ProductCategory = ProductCategory;
-  MeasureUnit = MeasureUnit;
   measureUnitOptions = MeasureUnitLabels;
-  // measureUnitOptions = Object.keys(MeasureUnit).filter(key => isNaN(Number(key))).map(key => ({ label: key, value: MeasureUnit[key as keyof typeof MeasureUnit] }));
   categoryOptions = Object.keys(ProductCategory).filter(key => isNaN(Number(key))).map(key => ({ label: key, value: ProductCategory[key as keyof typeof ProductCategory] }));
 
   constructor(private facade: ProductFacade, private fb: FormBuilder, private route: ActivatedRoute) {
@@ -54,23 +51,30 @@ export class ProductComponent implements OnInit {
       unit: ['', Validators.required]
     });
 
+    let id;
+    if ((id = this.route.snapshot.params['id'])) {
+      this.loadProduct(id);
+    }
+  }
+
+  loadProduct(productId: any) {
+    this.facade.getProductById(productId);
     this.facade.getSelectedProduct().subscribe(product => {
       if (product) {
         this.product = product;
-        this.patchProduct(product);
+        this.patchProduct(this.product);
       }
     });
   }
 
   onSubmit(): void {
     if (this.productForm.valid) {
-      this.product = this.productForm.value;
-      console.log('Product added:', this.product);
+      this.parseProduct();
       if (this.product.id) {
-        // this.facade.updateProduct(this.product);
-      } else {
-        this.facade.addProduct(this.product);
+        this.facade.updateProduct(this.product);
+        return;
       }
+      this.facade.addProduct(this.product);
     }
   }
 

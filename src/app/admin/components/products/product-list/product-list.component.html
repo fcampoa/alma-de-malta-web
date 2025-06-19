@@ -1,7 +1,4 @@
-<div class="product-list-container">
-  @if(products$ | async; as products) {
-  <h2>Lista de Productos</h2>
-  <button mat-raised-button color="primary" (click)="onAdd()"><mat-icon>add</mat-icon> Agregar</button>
+<app-list-container [addRoute]="'/admin/products'" [title]="'Productos'">
   <div class="filter-buttons" style="margin: 1rem 0;">
     <button class="btn-format" mat-stroked-button [color]="activeType === productTypes.all ? 'primary' : ''"
       (click)="setTypeFilter(productTypes.all)">Todos</button>
@@ -10,6 +7,7 @@
     <button class="btn-format" mat-stroked-button [color]="activeType === productTypes.retail ? 'primary' : ''"
       (click)="setTypeFilter(productTypes.retail)">Combos</button>
   </div>
+  @if(products$ | async; as products) {
   <table mat-table [dataSource]="filteredProducts(products)" class="mat-elevation-z8">
     <!-- Nombre -->
     <ng-container matColumnDef="name">
@@ -48,4 +46,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   }
-</div>
+  </app-list-container>

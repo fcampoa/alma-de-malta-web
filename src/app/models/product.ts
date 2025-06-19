@@ -10,7 +10,6 @@ export interface Product extends BaseEntity {
   imageUrl?:string;
   category?:ProductCategory;
   stock?:number;
-  createdAt?: Date;
   brand?:string;
   type?:ProductType;
   availability?:number;
@@ -25,4 +24,11 @@ export interface ProductOverview {
     price?: number;
     description?: string;
     stock?: number;
+}
+
+export interface ProductSearchRequest {
+    productType?: ProductType | null;
+    productCategory?: ProductCategory | null;
+    isActive?: boolean;
+    brand?: string | null;
 }

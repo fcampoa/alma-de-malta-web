@@ -3,6 +3,7 @@ import { ProductState } from "../states-definition/product.state";
 import { Store } from "@ngrx/store";
 import * as ProductsSelector from "../selectors/products.selectors";
 import * as ProductActions from "../actions/products.actions";
+import { Product, ProductSearchRequest } from "../../models/product";
 
 @Injectable({
     providedIn: 'root'
@@ -35,7 +36,15 @@ export class ProductFacade {
         return this.store.select(ProductsSelector.GetSelectedProduct);
     }
 
-    setSelectedProduct(product: any) {
+    setSelectedProduct(product: Product | null) {
         this.store.dispatch(ProductActions.SetSelectedProduct({ product }));
+    }
+
+    updateProduct(product: Product) {
+        this.store.dispatch(ProductActions.UpdateProduct({ product }));
+    }
+
+    searchProducts(searchRequest: ProductSearchRequest) {
+        this.store.dispatch(ProductActions.SearchProducts({ searchRequest }));
     }
 }

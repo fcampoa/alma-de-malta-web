@@ -34,4 +34,8 @@ export class BaseService<T, K>{
     delete(id: any) {
         return this.http.delete(`${this.environment.apiBaseUrl}/${this.endpoint}/${id}`);
     }
+
+    search(searchTerm: any): Observable<K> {
+        return this.http.post<K>(`${this.environment.apiBaseUrl}/${this.endpoint}/search`, searchTerm);
+    }
 }

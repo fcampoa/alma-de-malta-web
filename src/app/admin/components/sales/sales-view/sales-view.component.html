@@ -1,0 +1,30 @@
+<app-container>
+    @for(row of productRows; track row) {
+    <div class="row">
+        @for(product of row; track product) {
+        <div class="col-md-4 mb-3">
+            <button mat-raised-button color="primary" class="product-btn" (click)="addToCart(product)">
+                {{ product.name }}
+            </button>
+        </div>
+    }
+    </div>
+}
+</app-container>
+
+<!-- 
+<app-container>
+  @for(row of productRows; track row) {
+    <div class="row">
+      @for(product of row; track product) {
+        <div class="col-md-4 mb-3 d-flex justify-content-center">
+          <mat-card class="product-card" (click)="addToCart(product)" style="cursor:pointer;">
+            <div class="d-flex align-items-center justify-content-center h-100 w-100">
+              <span>{{ product.name }}</span>
+            </div>
+          </mat-card>
+        </div>
+      }
+    </div>
+  }
+</app-container> -->

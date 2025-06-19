@@ -1,12 +1,27 @@
-
 <mat-sidenav-container class="sidenav-container">
   <!-- Sidebar -->
   <mat-sidenav color="primary" #drawer mode="side" class="sidenav" fixedInViewport [opened]="isSidebarOpen">
     <mat-nav-list>
-      <a mat-list-item routerLink="/admin/products/list">productos</a>
+      <a mat-list-item routerLink="/site">Inicio</a>
+      <a mat-list-item routerLink="/admin/products/list">Productos</a>
       <a mat-list-item routerLink="/admin/inventory">Inventario</a>
-      <a mat-list-item routerLink="/settings">Ventas</a>
-      <a mat-list-item routerLink="/admin/users">Reportes</a>
+      
+      <!-- Submenú Ventas -->
+      <mat-expansion-panel class="mat-elevation-z0" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Ventas
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/admin/sales">Listado de Ventas</a>
+          <a mat-list-item routerLink="/admin/sales/create">Agregar Venta</a>
+          <a mat-list-item routerLink="/admin/sales/reports">Reportes</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      
+      <a mat-list-item routerLink="/admin/users">Usuarios</a>
+      <a mat-list-item routerLink="/admin/payment-methods">Métodos de Pago</a>
     </mat-nav-list>
   </mat-sidenav>
 
