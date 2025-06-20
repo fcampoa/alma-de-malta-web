@@ -4,14 +4,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { ProductFacade } from '../../../../State/facades/product-facade';
 import { EMPTY, Observable } from 'rxjs';
-import { Product } from '../../../../models/product';
+import { Product, ProductOverview } from '../../../../models/product';
 import { ProductType } from '../../../../enums/product-type.enum';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { ListContainerComponent } from "../../../../shared/list-container/list-container.component";
 
 @Component({
   selector: 'app-product-list',
-  imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule, ListContainerComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
@@ -30,15 +31,9 @@ export class ProductListComponent implements OnInit {
     this.products$ = this.productsFacade.Products();
   }
 
-  onAdd(): void {
-    this.productsFacade.setSelectedProduct(null);
-    this.router.navigate(['/admin/products']);
-    console.log('Agregar producto');
-  }
-
-  onEdit(product: Product): void {
+  onEdit(product: ProductOverview): void {
+    this.router.navigate([`/admin/products/${product.productId}/edit`]);
     this.productsFacade.setSelectedProduct(product);
-    this.router.navigate(['/admin/products']);
     console.log('Editar producto:', product);
   }
 

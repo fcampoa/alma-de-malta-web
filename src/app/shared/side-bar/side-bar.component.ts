@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-side-bar',
@@ -14,7 +15,8 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    RouterModule],
+    RouterModule,
+    MatExpansionModule],
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.scss']
 })

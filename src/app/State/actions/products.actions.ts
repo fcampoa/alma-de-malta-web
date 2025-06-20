@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { productsFeatureKey } from "../features-keys";
-import { Product, ProductOverview } from "../../models/product";
+import { Product, ProductOverview, ProductSearchRequest } from "../../models/product";
 
 const prefix = `${productsFeatureKey} [products]`;
 
@@ -25,4 +25,14 @@ export const SetSelectedProduct = createAction(
 export const CreateProduct = createAction(
   `${prefix} Create Product`,
   props<{ product: Product }>()
+);
+
+export const UpdateProduct = createAction(
+  `${prefix} Update Product`,
+  props<{ product: Product }>()
+);
+
+export const SearchProducts = createAction(
+  `${prefix} Search Products`,
+  props<{ searchRequest: ProductSearchRequest }>()
 );

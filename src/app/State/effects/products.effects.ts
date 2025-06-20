@@ -12,7 +12,7 @@ export class ProductsEffects {
     getProductsEffect$;
     getProductsByIdEffect$;
     createProductEffect$;
-    // searchProductsEffect$;
+    searchProductsEffect$;
     constructor(private productService: ProductService, private actions$: Actions, private route: Router) {
 
         this.getProductsEffect$ = createEffect(() => {
@@ -59,6 +59,22 @@ export class ProductsEffects {
                         ),
                         catchError((error) => 
                             of(ProductActions.SetSelectedProduct({ product: null }))
+                        )
+                    )
+                )
+            );
+        });
+        this.searchProductsEffect$ = createEffect(() => {
+            return this.actions$.pipe(
+                ofType(ProductActions.SearchProducts),
+                switchMap((action) =>
+                    this.productService.search(action.searchRequest).pipe(
+                        map((response: ApiResponse) => {
+                            return ProductActions.SetProducts({ products: response.body as ProductOverview[] });
+                        }
+                        ),
+                        catchError((error) =>
+                            of(ProductActions.SetProducts({ products: [] }))
                         )
                     )
                 )
