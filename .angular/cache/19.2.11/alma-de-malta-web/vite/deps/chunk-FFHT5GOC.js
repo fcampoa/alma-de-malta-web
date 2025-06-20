@@ -20,14 +20,14 @@ import {
   _getEventTarget,
   coerceArray,
   hasModifierKey
-} from "./chunk-LNNXKYKH.js";
+} from "./chunk-4DDTTQ7I.js";
+import {
+  supportsScrollBehavior
+} from "./chunk-2O4WY5GE.js";
 import {
   _CdkPrivateStyleLoader,
   _bindEventWithOptions
 } from "./chunk-EWGFASB4.js";
-import {
-  supportsScrollBehavior
-} from "./chunk-2O4WY5GE.js";
 import {
   Platform
 } from "./chunk-A3KBTHUG.js";
@@ -2891,4 +2891,4 @@ export {
   CdkConnectedOverlay,
   OverlayModule
 };
-//# sourceMappingURL=chunk-Y3CDMOQW.js.map
+//# sourceMappingURL=chunk-FFHT5GOC.js.map

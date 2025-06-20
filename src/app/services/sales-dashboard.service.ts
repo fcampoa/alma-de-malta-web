@@ -10,6 +10,6 @@ import { HttpClient } from "@angular/common/http";
 export class SalesDashboardService extends BaseService<SaleDashboard, ApiResponse> {
     
     constructor(private httpClient: HttpClient) {
-        super(httpClient, "sales-dashboard");
+        super(httpClient, "sales/dashboard");
     }
 }

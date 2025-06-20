@@ -32,7 +32,6 @@ export class ProductListComponent implements OnInit {
   }
 
   onEdit(product: ProductOverview): void {
-    debugger;
     this.router.navigate([`/admin/products/${product.productId}/edit`]);
     this.productsFacade.setSelectedProduct(product);
     console.log('Editar producto:', product);

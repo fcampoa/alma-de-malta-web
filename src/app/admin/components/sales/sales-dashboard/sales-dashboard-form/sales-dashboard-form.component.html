@@ -1,29 +1,24 @@
 <app-container>
-  <h2>Dashboard de Ventas</h2>
-  <form [formGroup]="dashboardForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill" class="w-100 mb-3">
-      <mat-label>Nombre del Dashboard</mat-label>
-      <input matInput formControlName="name" />
-    </mat-form-field>
-
-    <label>Productos:</label>
-    <div *ngFor="let product of products">
-      <mat-checkbox
-        [checked]="selectedProducts.some(p => p.productId === product.productId)"
-        (change)="onProductToggle(product, $event.checked)">
-        {{ product.name }}
-      </mat-checkbox>
-    </div>
-
-    <button mat-raised-button color="primary" type="submit" [disabled]="dashboardForm.invalid">
-      Guardar Dashboard
-    </button>
-  </form>
-
-  <h3 class="mt-4">Dashboards guardados</h3>
-  <mat-list>
-    <mat-list-item *ngFor="let dash of dashboards" (click)="onDashboardSelect(dash)" style="cursor:pointer;">
-      {{ dash.name }}
-    </mat-list-item>
-  </mat-list>
+    <h2>Dashboard de Ventas</h2>
+    <form [formGroup]="dashboardForm" (ngSubmit)="onSubmit()">
+        <div class="col-6 col-md-6 col-mb-6 col-sm-6">
+            <mat-form-field appearance="fill" class="w-100 mb-3">
+                <mat-label>Nombre del Dashboard</mat-label>
+                <input matInput formControlName="name" />
+            </mat-form-field>
+        </div>
+        <label>Productos:</label>
+        @if(products$ | async; as products) {
+        @for(product of products; track product) {
+        <div>
+            <mat-checkbox [checked]="isProductSelected(product)" (change)="onProductToggle(product, $event.checked)">
+                {{ product.name }}
+            </mat-checkbox>
+        </div>
+        }
+        }
+        <button mat-raised-button color="primary" type="submit" [disabled]="dashboardForm.invalid">
+            {{ dashboard ? 'Guardar Cambios' : 'Crear Dashboard' }}
+        </button>
+    </form>
 </app-container>

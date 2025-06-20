@@ -1,6 +1,6 @@
 import {
   MatCommonModule
-} from "./chunk-LNNXKYKH.js";
+} from "./chunk-4DDTTQ7I.js";
 import {
   ANIMATION_MODULE_TYPE,
   ChangeDetectionStrategy,
@@ -119,4 +119,4 @@ export {
   MatPseudoCheckbox,
   MatPseudoCheckboxModule
 };
-//# sourceMappingURL=chunk-G4K3BGRG.js.map
+//# sourceMappingURL=chunk-RXRDK42E.js.map
