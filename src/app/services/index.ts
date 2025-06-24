@@ -1,7 +1,15 @@
-import { InventoryService } from "./inventory.service";
-import { PaymentMethodService } from "./payment-method.service";
-import { ProductService } from "./products.service";
-import { SaleService } from "./sale.service";
-import { SalesDashboardService } from "./sales-dashboard.service";
+export { InventoryService } from "./inventory.service";
+export { NotificationService } from "./notification.service";
+export { PaymentMethodService } from "./payment-method.service";
+export { ProductService } from "./products.service";
+export { PurchaseOrderNumberPrefixService } from "./purchase-order-number-prefix.service";
+export { SaleService } from "./sale.service";
+export { SalesDashboardService } from "./sales-dashboard.service";
 
-export const Services = [ProductService, InventoryService, PaymentMethodService, SaleService, SalesDashboardService];
+// export const Services = [ProductService, 
+//                          InventoryService, 
+//                          PaymentMethodService, 
+//                          SaleService, 
+//                          SalesDashboardService,
+//                         PurchaseOrderNumberPrefixService,
+//                         NotificationService];

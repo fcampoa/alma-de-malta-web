@@ -86,7 +86,6 @@ export class ProductComponent implements OnInit {
     this.product = {
       id: this.product?.id,
       ... this.productForm.value as Product,
-      createdAt: new Date(),
     };
   }
 }

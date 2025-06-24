@@ -14,3 +14,23 @@ mat-form-field {
   width: 100%;
   margin-bottom: 1rem;
 }
+
+.kart-dialog-center .mat-dialog-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.snackbar-success {
+  background: #43a047 !important; // verde
+  color: #fff !important;
+}
+.snackbar-error {
+  background: #e53935 !important; // rojo
+  color: #fff !important;
+}
+.snackbar-info {
+  background: #1e88e5 !important; // azul
+  color: #fff !important;
+}

@@ -10,14 +10,23 @@ import { SaleDashboard } from "../../models/sale";
 })
 export class SaleFacade {
     
+    private salesLoaded = false;
+    private saleDashboardsLoaded = false;
+    private purchaseOrderNumberPrefixesLoaded = false;
+
     constructor(private store: Store<SaleState>) {
     }
 
     getSales(): void {
+        
         this.store.dispatch(SaleActions.GetSales());
+        this.salesLoaded = true;
     }
 
     sales() {
+        if (!this.salesLoaded) {
+            this.getSales();
+        }
         return this.store.select(SaleSelectors.GetSales);
     }
 
@@ -35,6 +44,7 @@ export class SaleFacade {
 
     createSale(sale: any) {
         this.store.dispatch(SaleActions.CreateSale({ sale }));
+        this.salesLoaded = false; // Reset sales loaded state to ensure fresh data
     }
 
     updateSale(sale: any) {
@@ -53,9 +63,13 @@ export class SaleFacade {
 
     getSaleDashboards() {
         this.store.dispatch(SaleActions.GetSaleDashboards());
+        this.saleDashboardsLoaded = true;
     }
 
     saleDashboards() {
+        if (!this.saleDashboardsLoaded) {
+            this.getSaleDashboards();
+        }
         return this.store.select(SaleSelectors.GetSaleDashboards);
     }
 
@@ -69,9 +83,47 @@ export class SaleFacade {
 
     createSaleDashboard(dashboard: SaleDashboard) {
         this.store.dispatch(SaleActions.CreateSaleDashboard({ dashboard }));
+        this.saleDashboardsLoaded = false; // Reset dashboards loaded state to ensure fresh data
     }
 
     updateSaleDashboard(dashboard: SaleDashboard) {
         this.store.dispatch(SaleActions.UpdateSaleDashboard({ dashboard }));
+        this.saleDashboardsLoaded = false; // Reset dashboards loaded state to ensure fresh data
+    }
+
+    // Purchase Order Number Prefix Actions
+
+    getPurchaseOrderNumberPrefixes() {
+        this.store.dispatch(SaleActions.GetPurchaseOrderNumberPrefixes());
+        this.purchaseOrderNumberPrefixesLoaded = true;
+    }
+
+    purchaseOrderNumberPrefixes() {
+        if (!this.purchaseOrderNumberPrefixesLoaded) {
+            this.getPurchaseOrderNumberPrefixes();
+        }
+        return this.store.select(SaleSelectors.GetPurchaseOrderNumberPrefixes);
+    }
+
+    getSelectedPurchaseOrderNumberPrefix() {
+        return this.store.select(SaleSelectors.GetSelectedPurchaseOrderNumberPrefix);
+    }
+
+    setSelectedPurchaseOrderNumberPrefix(prefix: any | null) {
+        this.store.dispatch(SaleActions.SetPurchaseOrderNumberPrefix({ prefix }));
+    }
+    
+    getPurchaseOrderNumberPrefixById(id: string) {
+        this.store.dispatch(SaleActions.GetPurchaseOrderNumberPrefixById({ id }));
+    }
+
+    createPurchaseOrderNumberPrefix(prefix: any) {
+        this.store.dispatch(SaleActions.CreatePurchaseOrderNumberPrefix({ prefix }));
+        this.purchaseOrderNumberPrefixesLoaded = false; // Reset prefixes loaded state to ensure fresh data
+    }
+
+    updatePurchaseOrderNumberPrefix(prefix: any) {
+        this.store.dispatch(SaleActions.UpdatePurchaseOrderNumberPrefix({ prefix }));
+        this.purchaseOrderNumberPrefixesLoaded = false; // Reset prefixes loaded state to ensure fresh data
     }
 }

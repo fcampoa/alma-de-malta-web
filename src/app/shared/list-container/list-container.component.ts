@@ -16,7 +16,7 @@ export class ListContainerComponent {
   constructor(private router: Router) { }
 
   @Input() title: string = 'Lista';
-  @Input() addRoute: string = 'add';
+  @Input() addRoute!:string;
 
   onAdd(): void {
     this.router.navigate([this.addRoute]);

@@ -1,0 +1,37 @@
+<app-list-container title="Prefijos de Venta" addRoute="admin/sales/prefixes/create">
+    @if(prefixes$ | async; as prefixes) {
+    <table mat-table [dataSource]="prefixes" class="mat-elevation-z8 w-100">
+
+        <!-- Prefijo -->
+        <ng-container matColumnDef="prefix">
+            <th mat-header-cell *matHeaderCellDef> Prefijo </th>
+            <td mat-cell *matCellDef="let prefix"> {{ prefix.prefix }} </td>
+        </ng-container>
+
+        <!-- Descripción -->
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Descripción </th>
+            <td mat-cell *matCellDef="let prefix"> {{ prefix.description }} </td>
+        </ng-container>
+
+        <!-- Siguiente Folio -->
+        <ng-container matColumnDef="nextNumber">
+            <th mat-header-cell *matHeaderCellDef> Folio Actual </th>
+            <td mat-cell *matCellDef="let prefix"> {{ prefix.number }} </td>
+        </ng-container>
+
+        <!-- Acciones -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let prefix">
+                <button mat-icon-button color="primary" (click)="onEdit(prefix)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['prefix', 'description', 'nextNumber', 'actions']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['prefix', 'description', 'nextNumber', 'actions'];"></tr>
+    </table>
+    }
+</app-list-container>

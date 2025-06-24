@@ -1,30 +1,63 @@
 <app-container>
-    @for(row of productRows; track row) {
-    <div class="row">
+  <div class="row">
+    <div class="col-md-8">
+
+      <!-- Productos del dashboard -->
+      @if(dashboard$ | async) {
+      @for(row of productRows; track row) {
+      <div class="row">
         @for(product of row; track product) {
         <div class="col-md-4 mb-3">
-            <button mat-raised-button color="primary" class="product-btn" (click)="addToCart(product)">
-                {{ product.name }}
-            </button>
+          <button mat-stroked-button color="primary" class="product-btn" (click)="addToCart(product)">
+            {{ product.name }}
+          </button>
         </div>
-    }
-    </div>
-}
-</app-container>
-
-<!-- 
-<app-container>
-  @for(row of productRows; track row) {
-    <div class="row">
-      @for(product of row; track product) {
-        <div class="col-md-4 mb-3 d-flex justify-content-center">
-          <mat-card class="product-card" (click)="addToCart(product)" style="cursor:pointer;">
-            <div class="d-flex align-items-center justify-content-center h-100 w-100">
-              <span>{{ product.name }}</span>
-            </div>
-          </mat-card>
-        </div>
+        }
+      </div>
+      }
       }
     </div>
-  }
-</app-container> -->
+
+    <!-- Columna derecha: acciones/carrito -->
+    <div class="col-md-4">
+      <div class="sticky-top" style="top: 2rem;">
+        <button mat-stroked-button color="accent" class="w-100 mb-2" (click)="openDashboardModal()">
+          Seleccionar Dashboard
+        </button>
+        <button mat-stroked-button color="warn" class="w-100 d-md-none mb-2" (click)="openCart()">
+          Ver Carrito
+          @if(sale.products?.length) {
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            style="font-size: 0.9em;">
+            {{ sale.products?.length }}
+          </span>
+        }
+        </button>
+        <div class="d-none d-md-block">
+        <app-kart [sale]="sale" (saleChange)="saleChangeEvent($event)"></app-kart>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de selección de dashboard -->
+  <ng-template #dashboardModal>
+    <h2 mat-dialog-title>Selecciona un Dashboard</h2>
+    <mat-dialog-content>
+      @if(dashboardsList$ | async; as dashboards) {
+      <mat-list>
+        @for(dashboard of dashboards; track dashboard) {
+        <mat-list-item (click)="selectDashboard(dashboard)"
+          style="cursor:pointer;">
+          {{ dashboard.name }}
+        </mat-list-item>
+      }
+      </mat-list>
+    }
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cerrar</button>
+    </mat-dialog-actions>
+  </ng-template>
+</app-container>

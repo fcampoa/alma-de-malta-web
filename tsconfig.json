@@ -21,7 +21,17 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    
+    "baseUrl": "./src",
+    "paths": {
+      "@facades/*": ["app/State/facades/*"],
+      "@services/*": ["app/services/*"],
+      "@models/*": ["app/models/*"],
+      "@components/*": ["app/components/*"],
+      "@enums/*": ["app/enums/*"],
+      "@shared/*": ["app/shared/*"],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

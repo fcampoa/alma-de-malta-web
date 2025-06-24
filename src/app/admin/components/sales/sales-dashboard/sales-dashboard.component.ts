@@ -4,9 +4,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { EMPTY, Observable } from 'rxjs';
-import { SaleDashboard } from '../../../../models/sale';
+import { SaleDashboard, SaleDashboardOverview } from '../../../../models/sale';
 import { SaleFacade } from '../../../../State/facades/sale-facade';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sales-dashboard',
@@ -17,16 +18,16 @@ import { CommonModule } from '@angular/common';
 })
 export class SalesDashboardComponent implements OnInit {
   displayedColumns: string[] = ['name', 'products', 'actions'];
-  dashboards$: Observable<SaleDashboard[]> = EMPTY;
+  dashboards$: Observable<SaleDashboardOverview[]> = EMPTY;
 
-  constructor(private saleFacade: SaleFacade) { }
+  constructor(private saleFacade: SaleFacade, private router: Router) { }
 
   ngOnInit(): void {
-    this.saleFacade.getSaleDashboards();
     this.dashboards$ = this.saleFacade.saleDashboards();
   }
 
   onEdit(dashboard: SaleDashboard): void {
+    this.router.navigate([`/admin/sales/dashboard/${dashboard.id}/edit`]);
   }
 
   onDelete(dashboard: SaleDashboard): void {

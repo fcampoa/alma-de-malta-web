@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { ProductService } from "../../services/products.service";
 import * as ProductActions from "../actions/products.actions";
 import { catchError, map, of, switchMap } from "rxjs";
-import { Product, ProductOverview } from "../../models/product";
-import { ApiResponse } from "../../models/response";
+import { Product, ProductOverview } from "@models/product";
+import { ApiResponse } from "@models/response";
 import { Router } from "@angular/router";
+import { NotificationService, ProductService } from "@services/index";
 
 @Injectable()
 export class ProductsEffects {
@@ -13,7 +13,7 @@ export class ProductsEffects {
     getProductsByIdEffect$;
     createProductEffect$;
     searchProductsEffect$;
-    constructor(private productService: ProductService, private actions$: Actions, private route: Router) {
+    constructor(private productService: ProductService, private actions$: Actions, private route: Router, private notificationService: NotificationService) {
 
         this.getProductsEffect$ = createEffect(() => {
             return this.actions$.pipe(
@@ -21,6 +21,7 @@ export class ProductsEffects {
                 switchMap(() =>
                     this.productService.get().pipe(
                         map((response: ApiResponse) => {
+                            this.notificationService.success('Products loaded successfully');
                             return ProductActions.SetProducts({ products: response.body as ProductOverview[] });
                         }
                         ),
