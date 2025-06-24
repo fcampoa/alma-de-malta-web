@@ -7,6 +7,8 @@ export const InitialState: SaleState = {
     selectedSale: null,
     saleDashboards: [],
     selectedSaleDashboard: null,
+    purchaseOrderNumberPrefixes: [],
+    selectedPurchaseOrderNumberPrefix: null,
 };
 
 export const SaleReducer = createReducer<SaleState>(
@@ -20,6 +22,7 @@ export const SaleReducer = createReducer<SaleState>(
         ...state,
         selectedSale: sale,
     })),
+    // Sale Dashboard Actions
     on(SaleActions.SetSaleDashboards, (state, { dashboards }) => ({
         ...state,
         saleDashboards: dashboards,
@@ -28,4 +31,13 @@ export const SaleReducer = createReducer<SaleState>(
         ...state,
         selectedSaleDashboard: dashboard,
     })),
+    // Purchase Order Number Prefix Actions
+    on(SaleActions.SetPurchaseOrderNumberPrefixes, (state, { prefixes }) => ({
+        ...state,
+        purchaseOrderNumberPrefixes: prefixes,
+    })),
+    on(SaleActions.SetPurchaseOrderNumberPrefix, (state, { prefix }) => ({
+        ...state,
+        selectedPurchaseOrderNumberPrefix: prefix,
+    }))
 );

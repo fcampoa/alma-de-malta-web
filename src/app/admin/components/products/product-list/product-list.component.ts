@@ -27,7 +27,6 @@ export class ProductListComponent implements OnInit {
   constructor(private productsFacade: ProductFacade, private router: Router) { }
 
   ngOnInit(): void {
-    this.productsFacade.getProducts();
     this.products$ = this.productsFacade.Products();
   }
 

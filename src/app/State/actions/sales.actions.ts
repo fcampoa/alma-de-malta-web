@@ -1,7 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import { salesFeatureKey } from "../features-keys";
 import e from "express";
-import { Sale, SaleDashboard } from "../../models/sale";
+import { PurchaseOrderNumberPrefix, Sale, SaleDashboard, SaleDashboardOverview } from "../../models/sale";
 
 const prefix = `${salesFeatureKey} [products]`;
 
@@ -62,7 +62,7 @@ export const GetSaleDashboards = createAction(
 
 export const SetSaleDashboards = createAction(
     `${prefix} Set Sale Dashboards`,
-    props<{ dashboards: SaleDashboard[] }>()
+    props<{ dashboards: SaleDashboardOverview[] }>()
 );
 
 export const GetSaleDashboardById = createAction(
@@ -82,5 +82,39 @@ export const SetSalesFilter = createAction(
 
 export const DeleteSaleDashboard = createAction(
     `${prefix} Delete Sale Dashboard`,
+    props<{ id: any }>()
+);
+
+export const GetPurchaseOrderNumberPrefixes = createAction(
+    `${prefix} Get Purchase Order Number Prefix`
+);
+
+export const SetPurchaseOrderNumberPrefix = createAction(
+    `${prefix} Set Purchase Order Number Prefix`,
+    props<{ prefix: PurchaseOrderNumberPrefix | null}>()
+);
+
+export const SetPurchaseOrderNumberPrefixes = createAction(
+    `${prefix} Set Purchase Order Number Prefixes`,
+    props<{ prefixes: PurchaseOrderNumberPrefix[] }>()
+);
+
+export const CreatePurchaseOrderNumberPrefix = createAction(
+    `${prefix} Create Purchase Order Number Prefix`,
+    props<{ prefix: PurchaseOrderNumberPrefix }>()
+);
+
+export const UpdatePurchaseOrderNumberPrefix = createAction(
+    `${prefix} Update Purchase Order Number Prefix`,
+    props<{ prefix: PurchaseOrderNumberPrefix }>()
+);
+
+export const DeletePurchaseOrderNumberPrefix = createAction(
+    `${prefix} Delete Purchase Order Number Prefix`,
+    props<{ id: any }>()
+);
+
+export const GetPurchaseOrderNumberPrefixById = createAction(
+    `${prefix} Get Purchase Order Number Prefix By Id`,
     props<{ id: any }>()
 );

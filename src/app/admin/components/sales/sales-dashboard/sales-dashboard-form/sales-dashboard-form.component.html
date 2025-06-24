@@ -7,6 +7,11 @@
                 <input matInput formControlName="name" />
             </mat-form-field>
         </div>
+
+        <mat-checkbox formControlName="isDefault" class="mb-3">
+            Usar como dashboard predeterminado
+        </mat-checkbox>
+
         <label>Productos:</label>
         @if(products$ | async; as products) {
         @for(product of products; track product) {
@@ -17,7 +22,7 @@
         </div>
         }
         }
-        <button mat-raised-button color="primary" type="submit" [disabled]="dashboardForm.invalid">
+        <button mat-stroked-button color="primary" type="submit" [disabled]="dashboardForm.invalid">
             {{ dashboard ? 'Guardar Cambios' : 'Crear Dashboard' }}
         </button>
     </form>
