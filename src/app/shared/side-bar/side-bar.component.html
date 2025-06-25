@@ -2,9 +2,9 @@
   <!-- Sidebar -->
   <mat-sidenav color="primary" #drawer mode="side" class="sidenav" fixedInViewport [opened]="isSidebarOpen">
     <mat-nav-list>
-      <a mat-list-item routerLink="/site">Inicio</a>
-      <a mat-list-item routerLink="/admin/products/list">Productos</a>
-      <a mat-list-item routerLink="/admin/inventory">Inventario</a>
+      <a mat-list-item routerLink="/site" (click)="closeIfMobile()">Inicio</a>
+      <a mat-list-item routerLink="/admin/products/list" (click)="closeIfMobile()">Productos</a>
+      <a mat-list-item routerLink="/admin/inventory" (click)="closeIfMobile()">Inventario</a>
       
       <!-- Submenú Ventas -->
       <mat-expansion-panel class="mat-elevation-z0" hideToggle>
@@ -14,15 +14,15 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink="/admin/sales">Listado de Ventas</a>
-          <a mat-list-item routerLink="/admin/sales/create">Agregar Venta</a>
-          <a mat-list-item routerLink="/admin/sales/dashboard">Dashboards</a>
-          <a mat-list-item routerLink="/admin/sales/prefixes">Prefijos de Venta</a>
+          <a mat-list-item routerLink="/admin/sales" (click)="closeIfMobile()">Listado de Ventas</a>
+          <a mat-list-item routerLink="/admin/sales/create" (click)="closeIfMobile()">Agregar Venta</a>
+          <a mat-list-item routerLink="/admin/sales/dashboard" (click)="closeIfMobile()">Dashboards</a>
+          <a mat-list-item routerLink="/admin/sales/prefixes" (click)="closeIfMobile()">Folios de Venta</a>
         </mat-nav-list>
       </mat-expansion-panel>
       
-      <a mat-list-item routerLink="/admin/users">Usuarios</a>
-      <a mat-list-item routerLink="/admin/payment-methods">Métodos de Pago</a>
+      <a mat-list-item routerLink="/admin/users" (click)="closeIfMobile()">Usuarios</a>
+      <a mat-list-item routerLink="/admin/payment-methods" (click)="closeIfMobile()">Métodos de Pago</a>
     </mat-nav-list>
   </mat-sidenav>
 

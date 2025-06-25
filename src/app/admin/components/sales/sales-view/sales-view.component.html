@@ -1,4 +1,4 @@
-<app-container>
+<app-container [isLoading]="isLoading">
   <div class="row">
     <div class="col-md-8">
 
@@ -8,7 +8,7 @@
       <div class="row">
         @for(product of row; track product) {
         <div class="col-md-4 mb-3">
-          <button mat-stroked-button color="primary" class="product-btn" (click)="addToCart(product)">
+          <button mat-stroked-button color="primary" class="product-btn w-100 py-2 py-md-3" (click)="addToCart(product)">
             {{ product.name }}
           </button>
         </div>

@@ -1,11 +1,16 @@
-<div class="container">
+<div class="container" style="height: 100%; overflow-y: auto;">
+    @if(isLoading) {
+    <div class="saving-backdrop">
+        <mat-spinner></mat-spinner>
+    </div>
+    }
     @if(showBackButton) {
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-end">
             <app-back-button></app-back-button>
         </div>
     </div>
-}
+    }
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <ng-content></ng-content>

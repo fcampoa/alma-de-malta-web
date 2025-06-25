@@ -31,6 +31,8 @@ export class SalesViewComponent implements OnInit {
   dashboard!: SaleDashboard | null;
   dashboardsList$: Observable<SaleDashboardOverview[]> = EMPTY;
 
+  isLoading: boolean = false;
+
   sale!: Sale;
 
   constructor(private saleFacade: SaleFacade, private dialog: MatDialog) { }
@@ -95,7 +97,9 @@ export class SalesViewComponent implements OnInit {
 
   afterPay() {
     // Lógica después de pagar
+    this.isLoading = true;
     this.saleFacade.createSale(this.sale);
+    this.isLoading = false;
     this.newSale();
   }
 

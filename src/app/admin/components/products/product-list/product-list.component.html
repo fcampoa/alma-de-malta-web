@@ -1,4 +1,4 @@
-<app-list-container [addRoute]="'/admin/products'" [title]="'Productos'">
+<app-list-container [addRoute]="'/admin/products'" [title]="'Productos'" [isLoading]="isLoading">
   <div class="filter-buttons" style="margin: 1rem 0;">
     <button class="btn-format" mat-stroked-button [color]="activeType === productTypes.all ? 'primary' : ''"
       (click)="setTypeFilter(productTypes.all)">Todos</button>
