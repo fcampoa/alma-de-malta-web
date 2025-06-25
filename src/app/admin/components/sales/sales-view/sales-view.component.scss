@@ -1,6 +1,6 @@
 .product-btn {
-  width: 180px;
-  height: 180px;
+  width: 150px;
+  height: 150px;
   font-size: 1.3rem;
   display: flex;
   align-items: center;
@@ -21,4 +21,11 @@
 }
 .product-card:hover {
   box-shadow: 0 0 0 4px #1976d233;
+}
+
+@media (max-width: 768px) {
+  .product-btn {
+    font-size: 0.9em;
+    padding: 0.5em 0.2em;
+  }
 }

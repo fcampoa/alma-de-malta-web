@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { ProductFacade } from '../../../../State/facades/product-facade';
-import { EMPTY, Observable } from 'rxjs';
-import { Product, ProductOverview } from '../../../../models/product';
-import { ProductType } from '../../../../enums/product-type.enum';
+import { EMPTY, Observable, tap } from 'rxjs';
+import { Product, ProductOverview } from '@models/product';
+import { ProductType } from '@enums/product-type.enum';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { ListContainerComponent } from "../../../../shared/list-container/list-container.component";
+import { ListContainerComponent } from "@shared/list-container/list-container.component";
+import { NotificationService } from '@services/notification.service';
 
 @Component({
   selector: 'app-product-list',
@@ -18,16 +19,32 @@ import { ListContainerComponent } from "../../../../shared/list-container/list-c
 })
 export class ProductListComponent implements OnInit {
 
+  isLoading: boolean = false;
+
   products$: Observable<Product[]> = EMPTY;
   displayedColumns: string[] = ['name', 'description', 'price', 'stock', 'actions'];
   productTypes = ProductType;
 
   activeType: ProductType = ProductType.all;
 
-  constructor(private productsFacade: ProductFacade, private router: Router) { }
+  constructor(private productsFacade: ProductFacade, private notificationService: NotificationService, private router: Router) { }
 
   ngOnInit(): void {
-    this.products$ = this.productsFacade.Products();
+    this.isLoading = true;
+    this.products$ = this.productsFacade.Products().pipe(  tap({
+    next: products => {
+      this.isLoading = false;
+        this.notificationService.success('Productos cargados correctamente');
+    },
+    error: err => {
+      this.isLoading = false;
+      this.notificationService.error('Error al cargar los productos: ' + err.message);
+    },
+    complete: () => {
+      this.isLoading = false;
+      this.notificationService.success('Productos cargados correctamente');
+    }
+  }));
   }
 
   onEdit(product: ProductOverview): void {

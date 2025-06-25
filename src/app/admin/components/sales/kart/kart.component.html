@@ -38,7 +38,7 @@
     <!-- Selector de prefijo/sufijo -->
     @if(prefixes$ | async; as prefixes) {
     <mat-form-field appearance="fill" class="w-100 mb-3">
-        <mat-label>Prefijo/Folio</mat-label>
+        <mat-label>/Folio</mat-label>
         <mat-select [(ngModel)]="selectedPrefix">
             @for(prefix of prefixes; track prefix) {
             <mat-option *ngFor="let prefix of prefixes" [value]="prefix">
