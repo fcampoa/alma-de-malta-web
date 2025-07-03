@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Product } from './models/product';
 import { TopBarComponent } from './shared/top-bar/top-bar.component';
 import { SideBarComponent } from './shared/side-bar/side-bar.component';
+import { AuthFacade } from '@facades/auth-facade';
 
 @Component({
     selector: 'app-root',
@@ -11,13 +12,17 @@ import { SideBarComponent } from './shared/side-bar/side-bar.component';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'alma-de-malta-web';
   products!: Product[];
   isSideBarOpen = false;
 
-  constructor() {
+  constructor(private authFacade: AuthFacade) {
   }
+  ngOnInit() {
+    this.authFacade.checkLoggedIn();
+  }
+
   toggleSideBar() {
     this.isSideBarOpen = !this.isSideBarOpen;
     console.log(this.isSideBarOpen);

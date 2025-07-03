@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { ProductFacade } from '../../../../State/facades/product-facade';
@@ -27,13 +27,14 @@ export class ProductListComponent implements OnInit {
 
   activeType: ProductType = ProductType.all;
 
-  constructor(private productsFacade: ProductFacade, private notificationService: NotificationService, private router: Router) { }
+  constructor(private productsFacade: ProductFacade, private notificationService: NotificationService, private router: Router, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.isLoading = true;
     this.products$ = this.productsFacade.Products().pipe(  tap({
     next: products => {
       this.isLoading = false;
+      this.cdr.detectChanges();
         this.notificationService.success('Productos cargados correctamente');
     },
     error: err => {

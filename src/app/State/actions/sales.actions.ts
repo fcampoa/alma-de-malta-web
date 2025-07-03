@@ -1,6 +1,5 @@
 import { createAction, props } from "@ngrx/store";
 import { salesFeatureKey } from "../features-keys";
-import e from "express";
 import { PurchaseOrderNumberPrefix, Sale, SaleDashboard, SaleDashboardOverview } from "../../models/sale";
 
 const prefix = `${salesFeatureKey} [products]`;

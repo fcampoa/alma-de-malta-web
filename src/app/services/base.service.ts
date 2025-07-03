@@ -28,6 +28,7 @@ export class BaseService<T, K>{
     }
 
     update( body: T, id: any): Observable<K> {
+        debugger;
         return this.http.put<K>(`${this.environment.apiBaseUrl}/${this.endpoint}/${id}`, body);
     }
 

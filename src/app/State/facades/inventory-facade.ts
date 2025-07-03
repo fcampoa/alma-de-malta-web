@@ -3,13 +3,14 @@ import { InventoryMovement } from "../../models/inventory-movement";
 import { Store } from "@ngrx/store";
 import * as InventorySelector from "../selectors/inventory.selectors";
 import * as InventoryActions from "../actions/inventory.actions";
+import { InventoryState } from "../states-definition/Inventory.state";
 
 @Injectable({
     providedIn: 'root'
     })
 export class InventoryFacade {
     private inventoryMovementsLoaded = false;
-    constructor(private store: Store<InventoryMovement>) {
+    constructor(private store: Store<InventoryState>) {
     }
 
     getInventoryMovements(): void {

@@ -5,6 +5,7 @@ export { ProductService } from "./products.service";
 export { PurchaseOrderNumberPrefixService } from "./purchase-order-number-prefix.service";
 export { SaleService } from "./sale.service";
 export { SalesDashboardService } from "./sales-dashboard.service";
+export { UserService } from "./user.service";
 
 // export const Services = [ProductService, 
 //                          InventoryService, 

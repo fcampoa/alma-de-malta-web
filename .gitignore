@@ -6,6 +6,11 @@
 /out-tsc
 /bazel-out
 
+# Angular build and cache folders
+.angular/*
+dist/*
+node_modules/*
+
 # Node
 /node_modules
 npm-debug.log

@@ -30,7 +30,7 @@
       "@models/*": ["app/models/*"],
       "@components/*": ["app/components/*"],
       "@enums/*": ["app/enums/*"],
-      "@shared/*": ["app/shared/*"],
+      "@shared/*": ["app/shared/*"]
     }
   },
   "angularCompilerOptions": {
