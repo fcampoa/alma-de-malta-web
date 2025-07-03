@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { SaleState } from "../states-definition/sale.state";
 import { Store } from "@ngrx/store";
-import * as SaleSelectors from "../selectors/sales.selector";
+import * as SaleSelectors from "../selectors/sales.selectors";
 import * as SaleActions from "../actions/sales.actions";
 import { SaleDashboard } from "../../models/sale";
 

@@ -3,11 +3,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, tap } from 'rxjs';
 import { User } from '../../models/user';
-import { AuthenticationService } from '../../services/authentication.service';
 import { CommonModule } from '@angular/common';
 import { Role } from '../../enums/role.enum';
+import { AuthFacade } from '@facades/auth-facade';
+import { AuthService } from '@auth0/auth0-angular';
+import { UserFacade } from '@facades/users.facade';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-top-bar',
@@ -18,17 +21,30 @@ import { Role } from '../../enums/role.enum';
 })
 export class TopBarComponent implements OnInit {
 
-  @Output() toggleSidenav = new EventEmitter<void>();
-  user$: Observable<User> = EMPTY; // Replace 'any' with your actual user type
-  Role = Role; // Expose the Role enum to the template
+  env = environment
 
-  constructor(private authService: AuthenticationService) { }
+  @Output() toggleSidenav = new EventEmitter<void>();
+  user$: Observable<User | undefined> = EMPTY; // Replace 'any' with your actual user type
+  Role = Role; // Expose the Role enum to the template
+  isAuthenticated$: Observable<boolean> = EMPTY;
+  logged = false;
+
+  constructor(private authService: AuthService, private authFacade: AuthFacade, private userFacade: UserFacade) { }
 
   ngOnInit() {
-    this.user$ = this.authService.loggedUser();
+    this.user$ = this.userFacade.getSelectedUser();
+    this.authFacade.isAuthenticated().subscribe(isAuthenticated => {
+      this.logged = isAuthenticated});
   }
 
   toggle() {
     this.toggleSidenav.emit();
+  }
+
+  login() {
+    this.authFacade.login();
+  }
+  logout() {
+    this.authFacade.logout();
   }
 }

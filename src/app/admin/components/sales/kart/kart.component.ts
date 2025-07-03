@@ -34,15 +34,7 @@ import { SaleFacade } from '@facades/sale-facade';
   styleUrl: './kart.component.scss'
 })
 export class KartComponent implements OnInit {
-
-  // @Input() set setSale(value: Sale) {
-  //   this.sale = value;
-  //   if (this.sale && Array.isArray(this.sale.products)) {
-  //     this.sale.products = [...this.sale.products];
-  //   } else if (this.sale) {
-  //     this.sale.products = [];
-  //   }
-  // }
+  
   @Input() sale!: Sale;
   @Output() saleChange: EventEmitter<Sale> = new EventEmitter<Sale>();
 
@@ -66,7 +58,6 @@ export class KartComponent implements OnInit {
   ) {
     if (data?.sale) {
       this.sale = data.sale;
-      // this.productsSubject.next(this.sale.products || []);
     }
   }
   ngOnInit(): void {
@@ -82,13 +73,11 @@ export class KartComponent implements OnInit {
     } else {
       this.removeAll(item);
     }
-    // this.productsSubject.next(this.sale.products || []);
   }
 
   removeAll(item: SaleDetail) {
     if (this.sale.products) {
       this.sale.products = this.sale.products.filter(p => p !== item);
-      // this.productsSubject.next(this.sale.products || []);
     }
   }
 
@@ -126,7 +115,6 @@ export class KartComponent implements OnInit {
   }
 
   calculateChange() {
-    // Actualiza el cambio cuando cambia el importe recibido
     return this.getChange();
   }
 }

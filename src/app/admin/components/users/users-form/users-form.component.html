@@ -1,0 +1,29 @@
+<app-container title="Formulario de usuario" [isLoading]="isLoading">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="role" required>
+        @for(role of roles; track role) {
+          <mat-option [value]="role.value">{{ role.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="phone" type="tel">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Guardar</button>
+  </form>
+</app-container>

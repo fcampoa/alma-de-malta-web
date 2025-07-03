@@ -9,12 +9,10 @@ import { Observable } from "rxjs";
 
     loggedIn: boolean = false;
     loggedInUser: User = {
-        id: 0,
+        id: 'dev-id',
         name: "admin",
         email: "admin@email.com",
-        password: "admin123",
         role: Role.Admin,
-        token: "token"
     };
 
     constructor() { }

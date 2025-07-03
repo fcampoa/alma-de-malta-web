@@ -1,10 +1,10 @@
-import { Role } from "../enums/role.enum";
+import { Role } from "@enums/role.enum";
+import { BaseEntity } from "./base-entity";
 
-export interface User {
-    id: number;
+export interface User extends BaseEntity {
     name: string;
     email: string;
-    password: string;
-    role: Role; // 'admin' or 'user'
-    token?: string; // Optional, for JWT token
+    role: Role;
+    phone?: string;
+    authProviderId?: string;
     }

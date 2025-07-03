@@ -7,5 +7,6 @@ export const routes: Routes = [
     { path: 'inventory', component: InventoryMovementsComponent},
     { path: 'products', loadChildren: () => import('./components/products/products.routes').then(m => m.routes) },
     { path: 'sales', loadChildren: () => import('./components/sales/sales.routing').then(m => m.routes) },
-    { path: 'payment-methods', loadChildren: () => import('./components/payment-methods/payment-methods.routing').then(m => m.routes) }
+    { path: 'payment-methods', loadChildren: () => import('./components/payment-methods/payment-methods.routing').then(m => m.routes) },
+    { path: 'users', loadChildren: () => import('./components/users/users.routing').then(m => m.routes) },
 ];

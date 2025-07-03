@@ -1,14 +1,25 @@
 <mat-toolbar color="primary" class="menu-bar">
-  @if(user$ | async; as user ) {
-    @if (user.role === Role.Admin) {
-      <button mat-icon-button (click)="toggle()" class="menu-button">
-        <mat-icon>menu</mat-icon>
-      </button>
-    }
+  @if(user$ | async; as user) {
+  @if (user.role === Role.Admin) {
+  <button mat-icon-button (click)="toggle()" class="menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
   }
+  } 
+  <!-- @else if (!env.production) {
+  <button mat-icon-button (click)="toggle()" class="menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  } -->
   <span class="spacer"></span>
+  @if (logged) {
+  <button mat-button>Bienvenido, {{ (user$ | async)?.name || 'Usuario' }}</button>
+  } @else {
+  <button mat-button (click)="login()">Login</button>
+  }
   <button mat-button routerLink="/">Inicio</button>
   <button mat-button routerLink="site/about">Acerca</button>
   <button mat-button routerLink="/settings">Configuración</button>
   <button mat-button routerLink="/admin">Admin</button>
+  <button mat-button (click)="logout()">Logout</button>
 </mat-toolbar>
