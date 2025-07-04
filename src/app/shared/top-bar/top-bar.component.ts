@@ -42,4 +42,11 @@ export class TopBarComponent implements OnInit {
   logout() {
     this.authFacade.logout();
   }
+
+  login() {
+    this.authFacade.login();
+  }
+  logout() {
+    this.authFacade.logout();
+  }
 }
