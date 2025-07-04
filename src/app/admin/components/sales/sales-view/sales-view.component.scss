@@ -9,6 +9,21 @@
   text-align: center;
 }
 
+.cart-fab {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1050;
+}
+
+.cart-fab-left {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: auto;
+  z-index: 1050;
+}
+
 .product-card {
   width: 180px;
   height: 180px;

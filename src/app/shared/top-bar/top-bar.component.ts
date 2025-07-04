@@ -11,34 +11,29 @@ import { AuthFacade } from '@facades/auth-facade';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserFacade } from '@facades/users.facade';
 import { environment } from 'environments/environment';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-top-bar',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterModule, CommonModule],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterModule, CommonModule, MatMenuModule],
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
 
   env = environment
-
-  @Output() toggleSidenav = new EventEmitter<void>();
   user$: Observable<User | undefined> = EMPTY; // Replace 'any' with your actual user type
   Role = Role; // Expose the Role enum to the template
   isAuthenticated$: Observable<boolean> = EMPTY;
   logged = false;
 
-  constructor(private authService: AuthService, private authFacade: AuthFacade, private userFacade: UserFacade) { }
+  constructor(private authFacade: AuthFacade, private userFacade: UserFacade) { }
 
   ngOnInit() {
     this.user$ = this.userFacade.getSelectedUser();
     this.authFacade.isAuthenticated().subscribe(isAuthenticated => {
       this.logged = isAuthenticated});
-  }
-
-  toggle() {
-    this.toggleSidenav.emit();
   }
 
   login() {

@@ -8,7 +8,7 @@ import { AuthFacade } from '@facades/auth-facade';
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, TopBarComponent, SideBarComponent],
+    imports: [RouterOutlet, SideBarComponent],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })

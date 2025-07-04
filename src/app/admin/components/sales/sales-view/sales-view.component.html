@@ -24,22 +24,28 @@
         <button mat-stroked-button color="accent" class="w-100 mb-2" (click)="openDashboardModal()">
           Seleccionar Dashboard
         </button>
-        <button mat-stroked-button color="warn" class="w-100 d-md-none mb-2" (click)="openCart()">
-          Ver Carrito
-          @if(sale.products?.length) {
-          <span
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-            style="font-size: 0.9em;">
-            {{ sale.products?.length }}
-          </span>
-        }
-        </button>
         <div class="d-none d-md-block">
         <app-kart [sale]="sale" (saleChange)="saleChangeEvent($event)"></app-kart>
         </div>
       </div>
     </div>
   </div>
+
+    <!-- Botón flotante de carrito arriba a la derecha -->
+  <button mat-fab color="warn"
+    class="cart-fab cart-fab-left d-md-none top-60"
+    style="top:60px;"
+    (click)="openCart()"
+    aria-label="Ver Carrito">
+    <mat-icon>shopping_cart</mat-icon>
+    @if(sale.products?.length) {
+      <span
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+        style="font-size: 0.9em;">
+        {{ sale.products?.length }}
+      </span>
+    }
+  </button>
 
   <!-- Modal de selección de dashboard -->
   <ng-template #dashboardModal>

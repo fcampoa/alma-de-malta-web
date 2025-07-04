@@ -8,6 +8,7 @@
 
 # Angular build and cache folders
 .angular/*
+.angular/cache/*
 dist/*
 node_modules/*
 
