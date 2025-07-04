@@ -43,7 +43,7 @@ export class AuthFacade {
         this.isLoggedIn = false;
         localStorage.removeItem('isLoggedIn');
         this.store.dispatch(AuthActions.SetIsAuthenticated({ isAuthenticated: false }));
-        this.authService.logout({logoutParams: { returnTo: environment.auth0.logoutUrl }});
+        this.authService.logout();
     }
     getToken() {
         return this.store.select(AuthSelectors.GetAccessToken);

@@ -12,10 +12,18 @@ import { CommonModule } from '@angular/common';
 import { PaymentMethodFacade } from '../../../../State/facades/payment-method-facade';
 import { StatusEnum } from '@enums/status.enum';
 import { KartComponent } from '../kart/kart.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-sales-view',
-  imports: [ContainerComponent, MatButtonModule, MatCardModule, MatDialogModule, MatListModule, CommonModule, KartComponent],
+  imports: [ContainerComponent, 
+            MatButtonModule, 
+            MatCardModule, 
+            MatDialogModule, 
+            MatListModule, 
+            CommonModule, 
+            KartComponent,
+            MatIconModule],
   standalone: true,
   templateUrl: './sales-view.component.html',
   styleUrl: './sales-view.component.scss'

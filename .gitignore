@@ -7,9 +7,10 @@
 /bazel-out
 
 # Angular build and cache folders
-.angular/
-dist/
-node_modules/
+.angular/*
+.angular/cache/*
+dist/*
+node_modules/*
 
 # Node
 /node_modules

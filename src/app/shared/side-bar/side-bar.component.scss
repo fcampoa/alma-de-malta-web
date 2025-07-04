@@ -19,12 +19,11 @@
 }
 
 .content {
-  padding: 16px;
-  margin-top: 64px; /* Ajusta el contenido para que no se superponga con el toolbar */
+  padding: 0;
+  margin-top: 0; /* Ajusta el contenido para que no se superponga con el toolbar */
 }
-
 @media (max-width: 768px) {
   .sidenav {
-    width: 200px;
+    width: 150px;
   }
 }

@@ -1,6 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
+
   <!-- Sidebar -->
-  <mat-sidenav color="primary" #drawer mode="side" class="sidenav" fixedInViewport [opened]="isSidebarOpen">
+  <mat-sidenav color="primary" #drawer mode="over" class="sidenav" fixedInViewport [opened]="isSideBarOpen" (openedChange)="onDrawerChange($event)">
     <mat-nav-list>
       <a mat-list-item routerLink="/site" (click)="closeIfMobile()">Inicio</a>
       <a mat-list-item routerLink="/admin/products/list" (click)="closeIfMobile()">Productos</a>
@@ -20,8 +21,6 @@
           <a mat-list-item routerLink="/admin/sales/prefixes" (click)="closeIfMobile()">Folios de Venta</a>
         </mat-nav-list>
       </mat-expansion-panel>
-      
-      <a mat-list-item routerLink="/admin/users" (click)="closeIfMobile()">Usuarios</a>
       <a mat-list-item routerLink="/admin/payment-methods" (click)="closeIfMobile()">Métodos de Pago</a>
       <a mat-list-item routerLink="/admin/users" (click)="closeIfMobile()">Usuarios</a>
     </mat-nav-list>
@@ -29,6 +28,17 @@
 
   <!-- Main content -->
   <mat-sidenav-content>
+    @if(user$ | async; as user) {
+    <button mat-icon-button class="menu-toggle-btn" (click)="drawer.toggle()" style="position: absolute; top: 1rem; left: 1rem; z-index: 2000;">
+    <mat-icon>{{ menuIcon }}</mat-icon>
+  </button>
+}
+@else if (!env.production) {
+      <button mat-icon-button class="menu-toggle-btn" (click)="drawer.toggle()" style="position: absolute; top: 1rem; left: 1rem; z-index: 2000;">
+    <mat-icon>{{ menuIcon }}</mat-icon>
+  </button>
+}
+    <app-top-bar (toggleSidenav)="toggleSideBar()"></app-top-bar>
     <div class="content">
       <ng-content></ng-content>
     </div>
