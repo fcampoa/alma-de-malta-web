@@ -34,13 +34,7 @@ export class TopBarComponent implements OnInit {
     this.user$ = this.userFacade.getSelectedUser();
     this.authFacade.isAuthenticated().subscribe(isAuthenticated => {
       this.logged = isAuthenticated});
-  }
-
-  login() {
-    this.authFacade.login();
-  }
-  logout() {
-    this.authFacade.logout();
+  
   }
 
   login() {
