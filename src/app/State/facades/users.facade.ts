@@ -52,8 +52,8 @@ export class UserFacade {
         this.store.dispatch(UserActions.GetUserById({id}));
     }
 
-    login(user: User) {
-        this.store.dispatch(UserActions.LoginUser({user}));
+    login() {
+        this.store.dispatch(UserActions.LoginUser());
     }
 
 }

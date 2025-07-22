@@ -6,9 +6,7 @@ import { AuthState } from "../states-definition/auth.state";
 import { AuthService } from "@auth0/auth0-angular";
 import { UserFacade } from "./users.facade";
 import { combineLatest, filter } from "rxjs";
-import { User } from "@models/user";
 import { environment } from "environments/environment";
-import { Role } from "@enums/role.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -19,10 +17,10 @@ export class AuthFacade {
     constructor(private store: Store<AuthState>, private authService: AuthService, private userFacade: UserFacade) { }
 
     login() {
-        if (!environment.production) {
-            this.devLogin();
-            return;
-        }
+        // if (!environment.production) {
+        //     this.devLogin();
+        //     return;
+        // }
         this.authService.loginWithRedirect();
     }
 
@@ -31,13 +29,7 @@ export class AuthFacade {
         localStorage.setItem('isLoggedIn', true.toString());
         this.store.dispatch(AuthActions.SetIsAuthenticated({ isAuthenticated: true }));
         this.store.dispatch(AuthActions.SetAccessToken({ accessToken: environment.auth0.clientId }));
-        this.userFacade.login({
-            name: 'Desarrollador',
-            authProviderId: 'dev-auth-provider-id',
-            email: 'dev@antaressoft.com',
-            phone: '',
-            role: Role.Admin
-        } as User);
+        this.userFacade.login();
     }
     logout() {
         this.isLoggedIn = false;
@@ -70,16 +62,12 @@ export class AuthFacade {
             filter(([isAuthenticated, user]) => isAuthenticated && !!user)
         ).subscribe({
             next: ([isAuthenticated, user, token]) => {
+                debugger;
                 if (!this.isLoggedIn) {
                     localStorage.setItem('access_token', token);
                     this.store.dispatch(AuthActions.SetAccessToken({ accessToken: token }));
                     this.store.dispatch(AuthActions.SetIsAuthenticated({ isAuthenticated }));
-                    this.userFacade.login({
-                        name: user?.name,
-                        authProviderId: user?.sub,
-                        email: user?.email,
-                        phone: user?.phone_number
-                    } as User);
+                    this.userFacade.login();
                 }
             },
             error: (err) => {

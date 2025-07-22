@@ -39,6 +39,5 @@ export const DeleteUser = createAction(
 );
 
 export const LoginUser = createAction(
-    `${prefix} Login User`,
-    props<{ user: User }>()
+    `${prefix} Login User`
 );

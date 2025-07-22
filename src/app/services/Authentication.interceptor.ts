@@ -9,6 +9,7 @@ export const AuthenticationInterceptor: HttpInterceptorFn = (req, next) => {
         const router = inject(Router);
         return authFacade.getToken().pipe(
             switchMap(token => {
+                debugger;
                 if (token) {
                     req = req.clone({
                         setHeaders: {

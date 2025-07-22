@@ -6,6 +6,7 @@ import { UserService } from "@services/user.service";
 import { catchError, map, switchMap } from "rxjs";
 import * as UserActions from "../actions/user.actions";
 import { of } from "rxjs/internal/observable/of";
+import { environment } from "environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -115,14 +116,18 @@ export class UsersEffects {
       this.actions$.pipe(
         ofType(UserActions.LoginUser),
         switchMap(action =>
-          this.userService.login(action.user).pipe(
+          this.userService.login().pipe(
             map(response => {
+              debugger;
               this.notificationService.success("Login successful");
               console.log("Login response:", response);
               return UserActions.SetSelectedUser({ user: response.body });
             }),
             catchError(error => {
+              if (!environment.production) {
               this.notificationService.error("Login failed");
+              }
+              console.error("Login error:", error);
               return of(UserActions.SetSelectedUser({ user: undefined }));
             })
           )
