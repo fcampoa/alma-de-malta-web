@@ -17,10 +17,10 @@ export class AuthFacade {
     constructor(private store: Store<AuthState>, private authService: AuthService, private userFacade: UserFacade) { }
 
     login() {
-        // if (!environment.production) {
-        //     this.devLogin();
-        //     return;
-        // }
+        if (!environment.production) {
+            this.devLogin();
+            return;
+        }
         this.authService.loginWithRedirect();
     }
 
