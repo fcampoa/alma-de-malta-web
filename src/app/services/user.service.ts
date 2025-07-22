@@ -11,7 +11,7 @@ export class UserService extends BaseService<any, ApiResponse> {
     constructor(private httpClient: HttpClient) {
         super(httpClient, 'users');
     }
-    login(user: User) {
-        return this.httpClient.post<ApiResponse>(`${this.environment.apiBaseUrl}/users/login`, user);
+    login() {
+        return this.httpClient.post<ApiResponse>(`${this.environment.apiBaseUrl}/users/login`, null);
     }
 }

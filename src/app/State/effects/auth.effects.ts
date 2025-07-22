@@ -38,11 +38,7 @@ this.handleUserEffect$ = createEffect(() =>
 
           return this.AuthService.getAccessTokenSilently().pipe(
             switchMap(token =>
-              this.userService.login({
-                name: user.name,
-                authProviderId: user.sub,
-                email: user.email
-              } as User).pipe(
+              this.userService.login().pipe(
                 map(response => [
                   UserActions.SetSelectedUser({ user: response.body }),
                   AuthActions.SetAuthUser({ user: response.body }),
